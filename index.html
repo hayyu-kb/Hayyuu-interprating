@@ -1,119 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hayyu Language Interpreting</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f9;
-            color: #333;
-            margin-top: 50px;
-        }
-        h1 {
-            color: #0066cc;
-        }
-        form {
-            display: inline-block;
-            text-align: left;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            width: 320px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-            margin-bottom: 5px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        input {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #0066cc;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 5px;
-        }
-        button:hover {
-            background-color: #004080;
-        }
-        .logout-btn {
-            background-color: #cc0000;
-        }
-        .logout-btn:hover {
-            background-color: #800000;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hayyu Language Interpreting</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      color: #0056b3;
+      margin-bottom: 5px;
+    }
+    .form-container {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 450px;
+      box-sizing: border-box;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #004999;
+    }
+  </style>
 </head>
 <body>
 
-    <h1>Hayyu Language Interpreting 🌍</h1>
-    <p>Welcome! How can we help you today?</p>
-    <p>Please fill out the form below:</p>
+  <h1>Hayyu Language Interpreting 🌍</h1>
+  <p>Welcome! How can we help you today?</p>
+  <p>Please fill out the form below:</p>
 
-    <!-- A proper HTML Form container -->
-    <form>
-        <div class="form-group">
-            <label for="name">Enter Name:</label>
-            <input type="text" id="name" placeholder="Your full name">
-            
-            <label for="email">Enter Email Address:</label>
-            <input type="email" id="email" placeholder="your.email@example.com">
+  <div class="form-container">
+    <!-- Formspree Integration -->
+    <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+      
+      <label for="name">Enter Name:</label>
+      <input type="text" id="name" name="Full Name" required placeholder="e.g. John Doe">
 
-            <label for="nationality">Enter Nationality:</label>
-            <input type="text" id="nationality" placeholder="Your Nationality">
-        </div>
+      <label for="email">Enter Email Address:</label>
+      <input type="email" id="email" name="Email" required placeholder="name@example.com">
 
-        <div class="form-group">
-            <label for="dob">Enter Date of Birth:</label>
-            <input type="date" id="dob">
-            
-            <label for="doa">Enter Date of Application:</label>
-            <input type="date" id="doa">
-            
-            <label for="pd">Enter Preferred Date:</label>
-            <input type="date" id="pd">
-        </div>
+      <label for="nationality">Enter Nationality:</label>
+      <input type="text" id="nationality" name="Nationality" required placeholder="e.g. Oromo">
+
+      <label for="dob">Enter Date of Birth:</label>
+      <input type="date" id="dob" name="Date of Birth" required>
+
+      <label for="app_date">Enter Date of Application:</label>
+      <input type="date" id="app_date" name="Date of Application" required>
+
+      <label for="pref_date">Enter Preferred Date:</label>
+      <input type="date" id="pref_date" name="Preferred Date" required>
+
+      <button type="submit">Submit Info</button>
+
     </form>
-
-    <div>
-        <button onclick="submitForm()">Submit Info</button>
-        <button class="logout-btn" onclick="alert('Clicked and logged out!')">Log Out</button>
-    </div>
-
-    <script>
-        // Function to grab the user's name and email and display a personalized message
-        function submitForm() {
-            const nameInput = document.getElementById('name').value;
-            const emailInput = document.getElementById('email').value;
-
-            if (nameInput.trim() === "" || emailInput.trim() === "") {
-                alert("Please enter both your name and email before submitting!");
-            } else {
-                alert("Thank you, " + nameInput + "! We have received your email (" + emailInput + ") and will contact you soon.");
-            }
-        }
-
-        console.log("Website loaded successfully!");
-    </script>
+  </div>
 
 </body>
 </html>
